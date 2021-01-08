@@ -1,11 +1,12 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const publicKey = process.env.MARVEL_PUBLIC_KEY;
 const privateKey = process.env.MARVEL_PRIVATE_KEY;
 const axios = require("axios");
-
 var CryptoJS = require("crypto-js");
-
 var localCache = [];
 exports.getCharacters = (res, req) => {
+  console.log(process.env);
   var ts = new Date().getTime();
   var hash = CryptoJS.MD5(ts + privateKey + publicKey).toString();
 
