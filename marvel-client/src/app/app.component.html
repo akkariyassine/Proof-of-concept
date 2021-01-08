@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
+    <h2>
+      Page {{ currentPage + 1 }}
+      <div class="spinner-grow text-danger" role="status" *ngIf="incommingData">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </h2>
+
     <button type="button" class="btn btn-primary" (click)="nextPage()">
-      next
+      next >>
     </button>
     <button
       *ngIf="currentPage > 0"
@@ -9,7 +16,7 @@
       class="btn btn-secondary"
       (click)="previousPage()"
     >
-      previous
+      << previous
     </button>
   </div>
   <div class="row">

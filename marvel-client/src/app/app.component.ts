@@ -10,6 +10,7 @@ export class AppComponent {
   persons: Array<Person> = [];
   title = 'marvel-client';
   currentPage: number = 0;
+  incommingData: boolean = false;
   constructor(public marvelPersonsService: MarvelPersonsService) {
     this.marvelPersonsService
       .getPersons(this.currentPage, 20)
@@ -21,21 +22,25 @@ export class AppComponent {
   }
 
   previousPage() {
+    this.incommingData = true;
     this.currentPage--;
     this.marvelPersonsService
       .getPersons(this.currentPage, 20)
       .toPromise()
       .then((persons: any) => {
+        this.incommingData = false;
         this.persons = [];
         this.persons = persons.data.results as Array<Person>;
       });
   }
   nextPage() {
+    this.incommingData = true;
     this.currentPage++;
     this.marvelPersonsService
       .getPersons(this.currentPage, 20)
       .toPromise()
       .then((persons: any) => {
+        this.incommingData = false;
         this.persons = [];
         this.persons = persons.data.results as Array<Person>;
       });

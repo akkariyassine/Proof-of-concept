@@ -25,6 +25,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
 app.use("/marvel", marvelRoute);
+app.use(express.static(__dirname + "/marvel-client/public")); //__dir and not _dir
+
 server.listen(port, () => {
   console.log("server start at port ", port);
 });
