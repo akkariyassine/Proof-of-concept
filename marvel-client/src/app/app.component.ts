@@ -15,7 +15,8 @@ export class AppComponent {
       .getPersons(this.currentPage, 20)
       .toPromise()
       .then((persons: any) => {
-        this.persons = persons.data as Array<Person>;
+        this.persons = persons.data.results as Array<Person>;
+        console.log(this.persons);
       });
   }
 
@@ -26,7 +27,7 @@ export class AppComponent {
       .toPromise()
       .then((persons: any) => {
         this.persons = [];
-        this.persons = persons.data as Array<Person>;
+        this.persons = persons.data.results as Array<Person>;
       });
   }
   nextPage() {
@@ -36,7 +37,7 @@ export class AppComponent {
       .toPromise()
       .then((persons: any) => {
         this.persons = [];
-        this.persons = persons.data as Array<Person>;
+        this.persons = persons.data.results as Array<Person>;
       });
   }
 }

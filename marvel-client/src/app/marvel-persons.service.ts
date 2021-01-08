@@ -11,7 +11,7 @@ export class MarvelPersonsService {
 
   getPersons(page: number, index: number) {
     return this.http.get(
-      environment.back_url + '/marvel/getAll?nbr=' + page + '&index=' + index
+      environment.back_url + '/marvel/getAll?nbr=' + index + '&page=' + page
     );
   }
 }
