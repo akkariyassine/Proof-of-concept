@@ -15,8 +15,12 @@ exports.getCharacters = (res, req) => {
     "&apikey=" +
     publicKey +
     "&hash=" +
-    hash;
-  console.log(url);
+    hash +
+    "&limit=" +
+    req.query.nbr +
+    "&offset=" +
+    req.query.page;
+
   localCache.map((result) => {
     if (result.page == req.params.nbr) {
       res.status(200).json(result.data);
