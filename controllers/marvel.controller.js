@@ -4,12 +4,20 @@ const marvel = api.createClient({
   privateKey: "59298ac0c1fbdb9f31847e189611b6325b3db5d4",
 });
 
-var localCache = new Array();
+var localCache = [];
 exports.getCharacters = (res, req) => {
-  marvel.characters.findAll(function (err, results) {
-    if (err) {
-      res.status(err.status).json(err);
+  localCache.map((result) => {
+    if (result.page == req.params.nbr) {
+      res.status(200).json(result.data);
+      return 0;
     }
-    res.status(200).json(results);
   });
+  marvel.characters
+    .findAll(req.params.nbr, req.params.index)
+    .then((results) => {
+      localCache.push({ page: req.params.nbr, data: results });
+      res.status(200).json(results);
+    })
+    .fail(console.error)
+    .done();
 };
