@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  back_url: 'https://marvel-client.herokuapp.com',
+  back_url: 'http://localhost:5000',
 };
 
 /*
