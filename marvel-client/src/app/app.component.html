@@ -1,16 +1,30 @@
-<div class="row">
-  <div class="col-md-4 col-sm-12">
-    <div class="card" style="width: 18rem">
-      <img
-        class="card-img-top"
-        src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
-        alt="Card image cap"
-      />
-      <div class="card-body">
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
+<div class="container">
+  <div class="row">
+    <button type="button" class="btn btn-primary" (click)="nextPage()">
+      next
+    </button>
+    <button
+      *ngIf="currentPage > 0"
+      type="button"
+      class="btn btn-secondary"
+      (click)="previousPage()"
+    >
+      previous
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-12" *ngFor="let person of persons">
+      <div class="card">
+        <img
+          class="card-img-top"
+          src="{{ person.thumbnail.path + '.' + person.thumbnail.extension }}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h3 class="card-text">
+            {{ person.name }}
+          </h3>
+        </div>
       </div>
     </div>
   </div>

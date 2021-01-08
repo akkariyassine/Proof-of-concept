@@ -10,7 +10,7 @@ export class MarvelPersonsService {
   constructor(private http: HttpClient) {}
 
   getPersons(page: number, index: number) {
-    return this.http.get<Person>(
+    return this.http.get(
       environment.back_url + '/marvel/getAll?nbr=' + page + '&index=' + index
     );
   }
