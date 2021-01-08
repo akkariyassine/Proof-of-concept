@@ -1,5 +1,5 @@
-const publicKey = "2688f5e178b1c2781faa3c31bc1fbed9";
-const privateKey = "59298ac0c1fbdb9f31847e189611b6325b3db5d4";
+const publicKey = process.env.MARVEL_PUBLIC_KEY;
+const privateKey = process.env.MARVEL_PRIVATE_KEY;
 const axios = require("axios");
 
 var CryptoJS = require("crypto-js");
