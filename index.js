@@ -3,6 +3,7 @@ const server = require("http").Server(app);
 const cors = require("cors");
 const compression = require("compression");
 const port = process.env.PORT || 5000;
+
 const bodyParser = require("body-parser");
 const marvelRoute = require("./routers/marvel.route")();
 
@@ -20,7 +21,6 @@ app.use(
     extended: true,
   })
 );
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
